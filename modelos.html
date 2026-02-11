@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Descuentos | Detalles Zapatería</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+<nav id="menu">
+  <a href="index.html">Inicio</a>
+
+  <div class="dropdown">
+    <a>Modelos ▾</a>
+    <div class="submenu">
+      <a onclick="filtrarCategoria('todos')">Todos</a>
+      <a onclick="filtrarCategoria('tacones')">Tacones</a>
+      <a onclick="filtrarCategoria('chatitas')">Chatitas</a>
+      <a onclick="filtrarCategoria('botas')">Botas</a>
+    </div>
+  </div>
+
+  <a href="contactos.html">Contacto</a>
+</nav>
+</header>
+
+<h2>Nuestros Modelos</h2>
+
+<div class="filtro">
+  <button onclick="filtrarCategoria('todos')">Todos</button>
+  <button onclick="filtrarCategoria('botas')">Botas</button>
+  <button onclick="filtrarCategoria('chatitas')">Chatitas</button>
+  <button onclick="filtrarCategoria('tacones')">Tacones</button>
+</div>
+
+<!-- FILTRO POR TALLE -->
+<div class="filtro">
+  <label>Filtrar por talle:</label>
+
+  <select id="filtroTalle" onchange="filtrarTalle()">
+    <option value="todos">Todos</option>
+    <option value="36">36</option>
+    <option value="37">37</option>
+    <option value="38">38</option>
+    <option value="39">39</option>
+  </select>
+</div>
+
+<!-- PRODUCTOS -->
+<section class="productos">
+
+  <div class="producto" data-talles="36,37" data-categoria="botas">
+    <a href="zapatonegro.html">
+      <img src="zapato1.jpg">
+    </a>
+    <h3>Bota Blanca</h3>
+    <p>$25.000</p>
+  </div>
+
+  <div class="producto" data-talles="38,39" data-categoria="chatitas">
+    <a href="zapatomarron.html">
+      <img src="zapato2.jpg">
+    </a>
+    <h3>Chatita Marrón</h3>
+    <p>$25.000</p>
+  </div>
+
+</section>
+
+<!-- BOTÓN VOLVER -->
+<div style="margin:30px;">
+  <a href="index.html" class="boton">⬅ Volver al inicio</a>
+</div>
+
+<script>
+let categoriaActual = "todos";
+
+function abrirMenu(){
+  let menu = document.getElementById("menu");
+  if(menu){
+    menu.classList.toggle("mostrar");
+  }
+}
+
+// FUNCIÓN GENERAL QUE APLICA AMBOS FILTROS
+function aplicarFiltros(){
+  let talleSeleccionado = document.getElementById("filtroTalle").value;
+  let productos = document.querySelectorAll(".producto");
+
+  productos.forEach(prod =>{
+    let talles = prod.getAttribute("data-talles");
+    let categoria = prod.getAttribute("data-categoria");
+
+    let coincideTalle = (talleSeleccionado === "todos" || talles.split(",").includes(talleSeleccionado));
+    let coincideCategoria = (categoriaActual === "todos" || categoria === categoriaActual);
+
+    if(coincideTalle && coincideCategoria){
+      prod.style.display = "block";
+    } else {
+      prod.style.display = "none";
+    }
+  });
+}
+
+// CUANDO CAMBIA TALLE
+function filtrarTalle(){
+  aplicarFiltros();
+}
+
+// CUANDO CAMBIA CATEGORÍA
+function filtrarCategoria(cat){
+  categoriaActual = cat;
+  aplicarFiltros();
+}
+</script>
+
+</body>
+</html>

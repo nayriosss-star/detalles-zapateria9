@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Detalles Zapatería</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&family=Playfair+Display&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <img src="Logo.png" alt="Detalles Zapatería" class="logo-img">
+
+  <div class="menu-icon" onclick="abrirMenu()">☰</div>
+
+  <nav id="menu">
+    <a href="index.html">Inicio</a>
+    <a href="modelos.html">Modelos</a>
+    <a href="contactos.html">Contacto</a>
+  </nav>
+</header>
+
+<!-- BIENVENIDA -->
+<section class="hero">
+  <h2>Bienvenido a Detalles</h2>
+  <p>Calzado con estilo, calidad y comodidad</p>
+
+  <a href="modelos.html" class="boton">Ver Modelos</a>
+</section>
+
+<!-- DESTACADOS -->
+<section class="destacados">
+  <h2>Modelos Destacados</h2>
+
+  <div class="productos">
+
+    <div class="producto">
+      <h3>Zapatilla Blanca</h3>
+      <p>$25.000</p>
+    </div>
+
+    <div class="producto">
+      <h3>Bota Negra</h3>
+      <p>$40.000</p>
+    </div>
+
+    <div class="producto">
+      <h3>Deportiva Verde</h3>
+      <p>$30.000</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Detalles Zapatería</p>
+</footer>
+
+<script>
+function abrirMenu(){
+  let menu = document.getElementById("menu");
+
+  if(menu){
+    menu.classList.toggle("mostrar");
+  }
+}
+</script>
+
+</body>
+</html>

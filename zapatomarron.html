@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zapato Marron</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <a href="index.html" style="color:white;text-decoration:none;">← Volver</a>
+</header>
+
+<section class="detalle-producto">
+
+  <div class="galeria">
+
+    <button class="flecha izquierda" onclick="cambiarImagen(-1)">❮</button>
+
+    <img src="zapato2.jpg" class="activa">
+    <img src="zapato2.1.jpg">
+    <img src="zapato2.2.jpg">
+
+    <button class="flecha derecha" onclick="cambiarImagen(1)">❯</button>
+
+  </div>
+
+  <h2>Zapato marron</h2>
+  <p class="precio">$25.000</p>
+  <p>Calzado cómodo, moderno y perfecto para cualquier ocasión.</p>
+
+  <a href="contactos.html" class="boton">Consultar por WhatsApp</a>
+
+</section>
+
+
+<script>
+let index = 0;
+const imagenes = document.querySelectorAll(".galeria img");
+
+function mostrarImagen(i){
+  imagenes.forEach(img => img.classList.remove("activa"));
+  imagenes[i].classList.add("activa");
+}
+
+function cambiarImagen(direccion){
+  index += direccion;
+
+  if(index < 0){
+    index = imagenes.length - 1;
+  }
+
+  if(index >= imagenes.length){
+    index = 0;
+  }
+
+  mostrarImagen(index);
+}
+</script>
+
+
+</body>
+</html>
